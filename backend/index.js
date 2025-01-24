@@ -23,7 +23,7 @@ const __dirname = path.resolve();
 mongoose.set("strictQuery", false)
 const connect = async() => {
    try {
-      await mongoose.connect(process.env.MONGO_URI, {
+   mongoose.connect(process.env.MONGO_URI, {
          useNewUrlParser: true,
          useUnifiedTopology: true
       })
@@ -49,7 +49,7 @@ app.listen(port, () => {
    connect()
    console.log('server listening on port', port)
 })
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use(express.static(path.join(__dirname, '/frontend/dist')));
 app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
+   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
  })
