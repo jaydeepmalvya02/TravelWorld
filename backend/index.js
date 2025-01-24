@@ -18,6 +18,7 @@ const corsOptions = {
    origin: true,
    credentials: true
 }
+const __dirname = path.resolve();
 
 mongoose.set("strictQuery", false)
 const connect = async() => {
