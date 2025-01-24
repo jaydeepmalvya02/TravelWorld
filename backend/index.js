@@ -49,7 +49,7 @@ app.listen(port, () => {
    connect()
    console.log('server listening on port', port)
 })
-app.use(express.static(path.join(__dirname, '/frontend/dist')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
 app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+   res.sendFile(path.join(__dirname, 'frontend', 'build'));
  })
