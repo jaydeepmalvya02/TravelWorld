@@ -19,6 +19,10 @@ const corsOptions = {
    credentials: true
 }
 const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, 'frontend','build')));
+app.get('*', (req, res) => {
+   res.sendFile(path.join(__dirname, 'frontend', 'build','tour_images','index.html'));
+ })
 
 mongoose.set("strictQuery", false)
 const connect = async() => {
@@ -49,7 +53,3 @@ app.listen(port, () => {
    connect()
    console.log('server listening on port', port)
 })
-app.use(express.static(path.join(__dirname, 'frontend','build')));
-app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'frontend', 'build','index.html'));
- })
