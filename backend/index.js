@@ -14,15 +14,9 @@ import path  from 'path';
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
-const corsOptions = {
-   origin: true,
-   credentials: true
-}
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, 'frontend','build')));
-app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'frontend','build','index.html'));
- })
+app.use(cors())
+
+
 
 mongoose.set("strictQuery", false)
 const connect = async() => {
@@ -39,7 +33,7 @@ const connect = async() => {
 }
 
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors());
 app.use(cookieParser())
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/tours", tourRoute)
@@ -51,5 +45,5 @@ app.use("/api/v1/booking", bookingRoute)
 
 app.listen(port, () => {
    connect()
-   console.log('server listening on port', port)
+   console.log(`server listening on http://localhost:${port}`)
 })
