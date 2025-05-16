@@ -8,13 +8,17 @@ import userRoute from './routes/users.js'
 import authRoute from './routes/auth.js'
 import reviewRoute from './routes/reviews.js'
 import bookingRoute from './routes/bookings.js'
-import path  from 'path';
+
 
 
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
-app.use(cors())
+const corsOptions = {
+   origin: true,
+   credentials: true
+}
+
 
 
 
@@ -33,7 +37,7 @@ const connect = async() => {
 }
 
 app.use(express.json())
-app.use(cors());
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/tours", tourRoute)
@@ -45,5 +49,5 @@ app.use("/api/v1/booking", bookingRoute)
 
 app.listen(port, () => {
    connect()
-   console.log(`server listening on http://localhost:${port}`)
+   console.log(`server listening on http://localhost:${port}`);
 })
