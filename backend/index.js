@@ -46,8 +46,8 @@ app.get('/',async(req,res)=>{
    res.json({message:"Thi is API "})
 })
 
-
+connect();
 app.listen(port, () => {
-   connect()
+
    console.log(`server listening on http://localhost:${port}`);
 })
