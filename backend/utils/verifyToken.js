@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.accessToken;
+ 
 
   if (!token) {
     return res
@@ -24,7 +25,7 @@ export const verifyToken = (req, res, next) => {
 
 export const verifyUser = (req, res, next) => {
   verifyToken(req, res, next, () => {
-    if (req.user.id === req.params.id ) {
+    if (req.user.id === req.body.userId) {
       next();
     } else {
       return res
