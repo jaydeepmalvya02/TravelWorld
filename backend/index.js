@@ -33,9 +33,11 @@ const connect = async() => {
      process.exit(1); // Exit the process on failure
    }
 }
-
+const corsOptions={
+  origin:"*",
+}
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/tours", tourRoute)
