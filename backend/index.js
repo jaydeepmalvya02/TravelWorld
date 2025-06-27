@@ -8,6 +8,8 @@ import userRoute from "./routes/users.js";
 import authRoute from "./routes/auth.js";
 import reviewRoute from "./routes/reviews.js";
 import bookingRoute from "./routes/bookings.js";
+import adminRouter from "./routes/admin.js";
+import agentRouter from "./routes/agent.js";
 
 dotenv.config();
 const app = express();
@@ -17,6 +19,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "https://travel-world-frontend-three.vercel.app",
+    "http://localhost:5173",
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -47,6 +50,9 @@ app.use("/api/v1/tours", tourRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/booking", bookingRoute);
+app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/agent", agentRouter);
+
 app.get("/", async (req, res) => {
   res.json({ message: "Thi is API " });
 });

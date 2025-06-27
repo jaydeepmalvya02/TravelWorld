@@ -5,6 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import AdminContextProvider from "./context/AdminContext.jsx";
 import AppContextProvider from "./context/AppContext.jsx";
 import AgentContextProvider from "./context/AgentContext.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AdminContextProvider>

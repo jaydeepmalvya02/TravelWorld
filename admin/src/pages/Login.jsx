@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       if (state === "Admin") {
-        const { data } = await axios.post(`${backendUrl}/api/admin/login`, {
+        const { data } = await axios.post(`${backendUrl}/admin/login`, {
           email,
           password,
         });
@@ -30,7 +30,7 @@ const Login = () => {
           toast.error(data.message);
         }
       } else {
-        const { data } = await axios.post(`${backendUrl}/api/doctor/login`, {
+        const { data } = await axios.post(`${backendUrl}/agent/login`, {
           email,
           password,
         });
