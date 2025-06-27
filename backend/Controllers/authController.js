@@ -62,7 +62,7 @@ export const login = async (req, res) => {
       process.env.JWT_SECRET_KEY,
       { expiresIn: "15d" }
     );
-    console.log("ziaan hai aap", token);
+  
 
     // set token in the browser cookies and send the response to the client
     res

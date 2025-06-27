@@ -3,11 +3,11 @@ import React, { useContext, useEffect, useRef } from "react";
 import { AdminContext } from "../context/AdminContext";
 
 import { AgentContext } from "../context/AgentContext";
-import Logo from '../assets/images/logo.png'
+import Logo from "../assets/images/logo.png";
 const Navbar = () => {
   const { aToken, setAToken } = useContext(AdminContext);
   const { dToken, setDToken } = useContext(AgentContext);
-  const headerRef=useRef(null)
+  const headerRef = useRef(null);
 
   const logout = () => {
     if (aToken) {
@@ -39,22 +39,39 @@ const Navbar = () => {
   });
 
   return (
-    <div className="flex justify-between items-center px-4 sm:px-10 py-3 border-b bg-white gap-3">
-      <div className="flex items-center gap-2 text-xs">
-        <img className="w-36 sm:w-40 cursor-pointer" src={Logo} alt="Logo" />
-        <p className="border px-2.5 py-0.5 rounded-full border-gray-500 text-gray-600">
-          {aToken ? "Admin" : dToken ? "Agent" : "Guest"}
-        </p>
+    <header className="header" ref={headerRef}>
+      <div className="flex justify-between items-center px-4 sm:px-10 py-3 border-b bg-white gap-3">
+        <div className="flex items-center gap-2 text-xs">
+          <img className="w-36 sm:w-40 cursor-pointer" src={Logo} alt="Logo" />
+          <p className="border px-2.5 py-0.5 rounded-full border-gray-500 text-gray-600">
+            {aToken ? "Admin" : dToken ? "Agent" : "Guest"}
+          </p>
+        </div>
+        {(aToken || dToken) && (
+          <button
+            onClick={logout}
+            className="bg-[#faa935] px-10 py-2 rounded-full text-white"
+          >
+            Logout
+          </button>
+        )}
+        {
+          <style>{`
+          
+          .sticky__header {
+   width      : 100%;
+   height     : 80px;
+   line-height: 80px;
+   background : #fff;
+   position   : sticky;
+   top        : 0;
+   left       : 0;
+   box-shadow : 3px 3px 8px -3px #ddd;
+   z-index    : 999;
+}`}</style>
+        }
       </div>
-      {(aToken || dToken) && (
-        <button
-          onClick={logout}
-          className="bg-[#faa935] px-10 py-2 rounded-full text-white"
-        >
-          Logout
-        </button>
-      )}
-    </div>
+    </header>
   );
 };
 
