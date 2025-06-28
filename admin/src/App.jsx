@@ -14,6 +14,7 @@ import Profile from "./pages/Agent/Profile";
 import AgentPackages from "./pages/Agent/AgentPackages";
 import AgentList from "./pages/Admin/AgentList";
 import { AgentContext } from "./context/AgentContext";
+import AgentBookings from "./pages/Agent/AgentBookings";
 
 function App() {
   const { aToken } = useContext(AdminContext);
@@ -36,6 +37,7 @@ function App() {
           <Route path="/agent-dashboard" element={<AgentDashboard />} />
           <Route path="/agent-profile" element={<Profile />} />
           <Route path="/agent-packages" element={<AgentPackages />} />
+          <Route path="/agent-bookings" element={<AgentBookings />} />
 
           {/* <Route path='/'/> */}
         </Routes>

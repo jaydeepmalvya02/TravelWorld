@@ -47,6 +47,11 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    agentId:{
+      type:mongoose.Types.ObjectId,
+      ref:"Agent",
+   
+    },
   },
   { timestamps: true }
 );

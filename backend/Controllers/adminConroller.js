@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import Tour from "../models/Tour.js";
-
+import Agent from "../models/AgentModel.js"
 const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -29,4 +29,26 @@ const getAllTours=async(req,res)=>{
     res.json({ success: false, message: error.message });
   }
 }
-export {loginAdmin,getAllTours}
+
+// Get all Agents in admin panal
+const getAllAgents=async(req,res)=>{
+  try {
+    
+    const agents=await Agent.find({})
+    res.json({success:true,agents})
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+}
+const deleteAgent=async(req,res)=>{
+  try {
+    const agentId=req.params.id
+    await Agent.findByIdAndDelete(agentId)
+    res.json({success:true,message:"Successfuly Deleted!"})
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+}
+export {loginAdmin,getAllTours,getAllAgents,deleteAgent}

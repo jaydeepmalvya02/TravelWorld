@@ -4,12 +4,14 @@ import { createContext } from "react";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AgentContext = createContext();
 const AgentContextProvider = (props) => {
-  const [dToken, setAToken] = useState(false);
+  const [dToken, setDToken] = useState(
+    () => localStorage.getItem("dToken") || null
+  );
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const value = {
     dToken,
-    setAToken,
+    setDToken,
     backendUrl,
   };
   return (

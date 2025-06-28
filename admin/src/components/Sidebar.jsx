@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { AgentContext } from "../context/AgentContext";
 
 import { MdDashboardCustomize, MdOutlineDashboardCustomize } from 'react-icons/md'
-import { CgProfile} from 'react-icons/cg'
+import { CgBookmark, CgProfile} from 'react-icons/cg'
 import { FaAngellist, FaList, FaMapMarkedAlt, FaSuitcaseRolling } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -85,6 +85,17 @@ const Sidebar = () => {
           >
             <CgProfile/>
             <p className="hidden md:block">Profile</p>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `flex gap-3 items-center py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${
+                isActive ? "bg-[#f2f3ff] border-r-4 border-primary" : ""
+              }`
+            }
+            to={"/agent-bookings"}
+          >
+            <CgBookmark/>
+            <p className="hidden md:block">Boookings</p>
           </NavLink>
         </ul>
       )}
